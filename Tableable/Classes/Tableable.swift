@@ -13,7 +13,7 @@ public class TableViewDataSource: NSObject, UITableViewDataSource, UITableViewDe
     let sections: [TableViewSectionable]
     var selectedIndexPath: NSIndexPath?
     
-    init(sections: [TableViewSectionable]) {
+    public init(sections: [TableViewSectionable]) {
         self.sections = sections
     }
     
