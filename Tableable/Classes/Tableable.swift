@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class TableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
+public class TableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     let sections: [TableViewSectionable]
     var selectedIndexPath: NSIndexPath?
     
@@ -17,31 +17,31 @@ class TableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate 
         self.sections = sections
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return sections.count
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].rows()
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section].header()
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return sections[section].headerHeight()
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return sections[indexPath.section].cell(tableView, index: indexPath.row)
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return sections[indexPath.section].height(indexPath.row)
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.selectedIndexPath = indexPath
         sections[indexPath.section].cellSelected(atIndex: indexPath.row)
@@ -51,7 +51,7 @@ class TableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate 
 }
 
 /** Configures a single tableview section **/
-protocol TableViewSectionable {
+public protocol TableViewSectionable {
     
     /** Number of rows for this section **/
     func rows() -> Int
