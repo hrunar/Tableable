@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Tableable'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of Tableable.'
+  s.summary          = 'Compose a UITableView data source out of separate Section data sources.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+Tableable is a replacement for UITableViewDataSource / UITableViewDelegate. It lets you compose a tableview out of TableViewSectionable instances.
                        DESC
 
   s.homepage         = 'https://github.com/hrunar/Tableable'
@@ -31,7 +31,7 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'Tableable/Classes/**/*'
-  
+
   # s.resource_bundles = {
   #   'Tableable' => ['Tableable/Assets/*.png']
   # }
