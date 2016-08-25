@@ -1,0 +1,6 @@
+framework module Tableable {
+  umbrella header "Tableable-umbrella.h"
+
+  export *
+  module * { export * }
+}
