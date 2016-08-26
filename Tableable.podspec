@@ -18,7 +18,8 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-Tableable is a replacement for UITableViewDataSource / UITableViewDelegate. It lets you compose a tableview out of TableViewSectionable instances.
+Tableable is a replacement for UITableViewDataSource / UITableViewDelegate. It lets you compose a tableview out of self-contained sections (implementing TableViewSectionable).
+Perfect, for instance if the number of sections is calculated dynamically.
                        DESC
 
   s.homepage         = 'https://github.com/hrunar/Tableable'
