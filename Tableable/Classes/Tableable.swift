@@ -74,7 +74,7 @@ public protocol TableViewSectionable {
 }
 
 /** Default implementation for some of the methods in TableViewSectionable. **/
-extension TableViewSectionable {
+public extension TableViewSectionable {
     /** Returning default row height - override if needed **/
     func height(index: Int) -> CGFloat {
         return 44.0
