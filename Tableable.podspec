@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Tableable'
-  s.version          = '0.1.0.2'
+  s.version          = '0.1.0.3'
   s.summary          = 'Compose a UITableView data source out of separate Section data sources.'
 
 # This description is used to generate tags and improve search results.
