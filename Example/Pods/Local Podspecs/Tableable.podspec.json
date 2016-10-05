@@ -1,9 +1,9 @@
 {
   "name": "Tableable",
-  "version": "0.1.0",
-  "summary": "Tableable contains an implementation of UITableViewDataSource / Delegate that delegates table section setup and action handling to one or more TableViewSectionable objects.",
-  "description": "Use Tableable when you want to compose a tableview of separate section objects",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/Tableable",
+  "version": "0.2.0.0",
+  "summary": "Compose a UITableView data source out of separate Section data sources.",
+  "description": "Tableable is a replacement for UITableViewDataSource / UITableViewDelegate. It lets you compose a tableview out of self-contained sections (implementing TableViewSectionable).\nPerfect, for instance if the number of sections is calculated dynamically.",
+  "homepage": "https://github.com/hrunar/Tableable",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,9 +12,10 @@
     "Runar Svendsen": "runar.svendsen@gmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/Tableable.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/hrunar/Tableable.git",
+    "tag": "0.2.0.0"
   },
+  "social_media_url": "https://twitter.com/hrunar",
   "platforms": {
     "ios": "8.0"
   },

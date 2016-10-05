@@ -2,11 +2,9 @@ use_frameworks!
 
 target 'Tableable_Example' do
   pod 'Tableable', :path => '../'
+  pod 'SDWebImage'
+end
 
-  target 'Tableable_Tests' do
-    inherit! :search_paths
-
-    pod 'Quick', '~> 0.8'
-  pod 'Nimble', '~> 3.0'
-  end
+target 'Tableable_Tests' do
+  inherit! :search_paths
 end
