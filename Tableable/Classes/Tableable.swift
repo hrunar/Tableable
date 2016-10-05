@@ -26,11 +26,15 @@ public class TableViewDataSource: NSObject, UITableViewDataSource, UITableViewDe
     }
     
     public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section].header()
+        return sections[section].header()?.headerString ?? .None
     }
     
     public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return sections[section].headerHeight()
+        return sections[section].header()?.headerHeight ?? 0
+    }
+
+    public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return sections[section].header()?.headerView
     }
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -57,20 +61,35 @@ public protocol TableViewSectionable {
     func rows() -> Int
     
     /** Optional section header title **/
-    func header() -> String?
+    func header() -> TableViewSectionHeader?
     
     /** Dequeue, configure and return the section-specific tableView cell **/
     func cell(tableView: UITableView, index: Int) -> UITableViewCell
     
-    /** Returns the needed row height **/
-    func height(index: Int) -> CGFloat
-    
-    /** Defines the height needed for the section title.
-     Default implementation is provided, override if you need more than the standard section height **/
-    func headerHeight() -> CGFloat
-    
     /** Called when a cell in this section is selected **/
     func cellSelected(atIndex index:Int)
+    
+    /** Height of cells in this section **/
+    func height(index:Int) -> CGFloat
+}
+
+public struct TableViewSectionHeader {
+    private let headerString: String?
+    private let headerView: UIView?
+    private let headerHeight: CGFloat
+    
+    /** Create a header, providing the title string, and an optional height. The default height is set to 44.0 points if nothing else is specified */
+    public init(string: String, height: CGFloat = 44.0) {
+        self.headerString = string
+        self.headerHeight = height
+        self.headerView = .None
+    }
+    
+    public init(view: UIView, height: CGFloat = 44.0) {
+        self.headerView = view
+        self.headerHeight = height
+        self.headerString = .None
+    }
 }
 
 /** Default implementation for some of the methods in TableViewSectionable. **/
@@ -80,9 +99,8 @@ public extension TableViewSectionable {
         return 44.0
     }
     
-    /** If sectionHeader is set, return standard height, otherwise 0 **/
-    func headerHeight() -> CGFloat {
-        return (header() != nil) ? 44.0 : 0
+    func header() -> TableViewSectionHeader? {
+        return nil
     }
     
     /** No-op implementation for didSelectCellAtIndexPath **/
