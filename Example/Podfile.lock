@@ -1,11 +1,11 @@
 PODS:
-  - Nimble (3.2.0)
-  - Quick (0.9.3)
-  - Tableable (0.1.0)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - Tableable (0.2.0.0)
 
 DEPENDENCIES:
-  - Nimble (~> 3.0)
-  - Quick (~> 0.8)
+  - SDWebImage
   - Tableable (from `../`)
 
 EXTERNAL SOURCES:
@@ -13,10 +13,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Nimble: 703854335d181df169bbca9c97117b5cf8c47c1d
-  Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
-  Tableable: 4a13f7721ac3dc6fce3a08655396c09be058c84b
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  Tableable: 7ac08bab8a34b16470d725af271416bb26bb8b00
 
-PODFILE CHECKSUM: 547278fe18533083500a027f289f1030628df46e
+PODFILE CHECKSUM: 68bcabd4f312bb83952c474ca08db48b7f967b98
 
 COCOAPODS: 1.0.1
