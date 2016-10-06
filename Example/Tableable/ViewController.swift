@@ -68,13 +68,13 @@ struct StringDataSource: TableViewSectionable {
     }
     
     func cell(tableView: UITableView, index: Int) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("subtitleCell")!
+        let cell = tableView.dequeueReusableCellWithIdentifier("textCell")!
         cell.textLabel?.text = strings[index]
         return cell
     }
     
     func cellSelected(atIndex index: Int) {
-        print("String selected")
+        print("\(strings[index]) selected")
     }
 }
 
