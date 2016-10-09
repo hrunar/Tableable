@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Tableable'
-  s.version          = '0.2.0.0'
-  s.summary          = 'Compose a UITableView data source out of separate Section data sources.'
+  s.version          = '0.3.0.0'
+  s.summary          = 'Compose a UITableView data source out of separate Section data sources. Built with Swift 3. Newest available Swift 2.3 version is 0.2.0.0.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
