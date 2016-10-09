@@ -9,47 +9,47 @@
 import UIKit
 import Foundation
 
-public class TableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
+open class TableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     let sections: [TableViewSectionable]
-    var selectedIndexPath: NSIndexPath?
+    var selectedIndexPath: IndexPath?
     
     public init(sections: [TableViewSectionable]) {
         self.sections = sections
     }
     
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    open func numberOfSections(in tableView: UITableView) -> Int {
         return sections.count
     }
     
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sections[section].rows()
     }
     
-    public func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section].header()?.headerString ?? .None
+    open func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section].header()?.headerString ?? .none
     }
     
-    public func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    open func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return sections[section].header()?.headerHeight ?? 0
     }
 
-    public func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return sections[section].header()?.headerView
     }
     
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return sections[indexPath.section].cell(tableView, index: indexPath.row)
+    open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return sections[(indexPath as NSIndexPath).section].cell(tableView, index: (indexPath as NSIndexPath).row)
     }
     
-    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return sections[indexPath.section].height(indexPath.row)
+    open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return sections[(indexPath as NSIndexPath).section].height((indexPath as NSIndexPath).row)
     }
     
-    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         self.selectedIndexPath = indexPath
-        sections[indexPath.section].cellSelected(atIndex: indexPath.row)
-        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        sections[(indexPath as NSIndexPath).section].cellSelected(atIndex: (indexPath as NSIndexPath).row)
+        tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
     }
     
 }
@@ -64,38 +64,38 @@ public protocol TableViewSectionable {
     func header() -> TableViewSectionHeader?
     
     /** Dequeue, configure and return the section-specific tableView cell **/
-    func cell(tableView: UITableView, index: Int) -> UITableViewCell
+    func cell(_ tableView: UITableView, index: Int) -> UITableViewCell
     
     /** Called when a cell in this section is selected **/
     func cellSelected(atIndex index:Int)
     
     /** Height of cells in this section **/
-    func height(index:Int) -> CGFloat
+    func height(_ index:Int) -> CGFloat
 }
 
 public struct TableViewSectionHeader {
-    private let headerString: String?
-    private let headerView: UIView?
-    private let headerHeight: CGFloat
+    fileprivate let headerString: String?
+    fileprivate let headerView: UIView?
+    fileprivate let headerHeight: CGFloat
     
     /** Create a header, providing the title string, and an optional height. The default height is set to 44.0 points if nothing else is specified */
     public init(string: String, height: CGFloat = 44.0) {
         self.headerString = string
         self.headerHeight = height
-        self.headerView = .None
+        self.headerView = .none
     }
     
     public init(view: UIView, height: CGFloat = 44.0) {
         self.headerView = view
         self.headerHeight = height
-        self.headerString = .None
+        self.headerString = .none
     }
 }
 
 /** Default implementation for some of the methods in TableViewSectionable. **/
 public extension TableViewSectionable {
     /** Returning default row height - override if needed **/
-    func height(index: Int) -> CGFloat {
+    func height(_ index: Int) -> CGFloat {
         return 44.0
     }
     

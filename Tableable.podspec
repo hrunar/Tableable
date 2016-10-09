@@ -27,7 +27,7 @@ Perfect, for instance if the number of sections is calculated dynamically.
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Runar Svendsen' => 'runar.svendsen@gmail.com' }
   s.source           = { :git => 'https://github.com/hrunar/Tableable.git', :tag => s.version.to_s }
-  s.social_media_url = 'https://twitter.com/hrunar'
+  #s.social_media_url = 'https://twitter.com/hrunar'
 
   s.ios.deployment_target = '8.0'
 

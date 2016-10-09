@@ -18,8 +18,8 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let imageURLS = [NSURL(string: "https://peoplemanaus.files.wordpress.com/2009/12/coupe.jpg")!,
-                         NSURL(string: "https://peoplemanaus.files.wordpress.com/2009/12/coupe.jpg")!]
+        let imageURLS = [URL(string: "https://peoplemanaus.files.wordpress.com/2009/12/coupe.jpg")!,
+                         URL(string: "https://peoplemanaus.files.wordpress.com/2009/12/coupe.jpg")!]
         let strings = ["The", "quick", "brown", "fox", "jumped", "over", "the", "lazy", "dog"]
         self.dataSource = TableViewDataSource(sections: [ImageDataSource(imageURLs: imageURLS),
             StringDataSource(strings: strings)])
@@ -30,13 +30,13 @@ class ViewController: UITableViewController {
 }
 
 struct ImageDataSource: TableViewSectionable {
-    let imageURLs: [NSURL]
+    let imageURLs: [URL]
     
     func rows() -> Int {
         return imageURLs.count
     }
     
-    func height(index: Int) -> CGFloat {
+    func height(_ index: Int) -> CGFloat {
         return index > 0 ? CGFloat(200.0) : CGFloat(100.0)
     }
     
@@ -44,10 +44,10 @@ struct ImageDataSource: TableViewSectionable {
         return TableViewSectionHeader(string: "Images")
     }
     
-    func cell(tableView: UITableView, index: Int) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("imageCell") as! ImageCell
+    func cell(_ tableView: UITableView, index: Int) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell") as! ImageCell
         let imageURL = imageURLs[index]
-        cell.cellImage?.sd_setImageWithURL(imageURL)
+        cell.cellImage?.sd_setImage(with: imageURL)
         return cell
     }
     
@@ -67,8 +67,8 @@ struct StringDataSource: TableViewSectionable {
         return TableViewSectionHeader(string: "Strings")
     }
     
-    func cell(tableView: UITableView, index: Int) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("textCell")!
+    func cell(_ tableView: UITableView, index: Int) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "textCell")!
         cell.textLabel?.text = strings[index]
         return cell
     }
